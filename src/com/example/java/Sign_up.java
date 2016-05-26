@@ -43,7 +43,7 @@ public class Sign_up extends JFrame implements ActionListener {
         User ur = new User();
         ur.sign_up(t1.getText(),Integer.parseInt(t2.getText()));
         m.setVisible(false);
-        Login lg = new Login(ur);
+        Login lg = new Login(ur,this);
         lg.setVisible(true);
         lg.setSize(500,500);
     }

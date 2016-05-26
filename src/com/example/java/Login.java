@@ -11,11 +11,16 @@ public class Login extends JFrame implements ActionListener {
 
     JLabel l1,l2,l3,l4;
     User mUser = new User();
+    Sign_up sp = new Sign_up();
     JTextField t1;
     JPasswordField t2;
     JButton b;
     JPanel p;
-    Login(User ur){
+    Login(){
+
+    }
+    Login(User ur, Sign_up sign_up){
+        sp = sign_up;
         l3 = new JLabel("Login To Continue");
         l1 = new JLabel("User_Name  : ");
         l2 = new JLabel("PIN : ");
@@ -35,11 +40,12 @@ public class Login extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (mUser.user_name.equals(t1.getText().toString()) && mUser.pin == Integer.parseInt(t2.getText())){
-            Operate ac = new Operate(mUser);
+        if (sp!=null)
+        sp.setVisible(false);
+        if (mUser.user_name.equals(t1.getText()) && mUser.pin == Integer.parseInt(t2.getText())){
+            Operate ac = new Operate(mUser,this);
             ac.setVisible(true);
             ac.setSize(500,500);
-            p.setVisible(false);
         }
         else{
             t1.setText("Enter name");

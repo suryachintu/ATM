@@ -7,50 +7,73 @@ import java.awt.event.ActionListener;
 /**
  * Created by surya on 26-05-2016.
  */
-public class Operate extends JFrame implements ActionListener {
+public class Operate extends JFrame {
 
     User mU = new User();
-    JButton b1;
-    JButton b2;
-    JButton b3;
-    JButton b4;
+    Login lg = new Login();
+    Detail bal;
+    JButton b1,b2,b3,b4,b5;
     JPanel p;
-    public Operate(User mUser) {
+    Operate(){}
+    public Operate(User mUser, Login login) {
         mU = mUser;
+        lg = login;
+        final Operate op = this;
         b1= new JButton("WITHDRAW");
         b2= new JButton("DEPOSIT");
-        b3= new JButton("CHANGE PIN");
+        b3= new JButton("CHANGE_PIN");
         b4= new JButton("INFO");
+        b5 = new JButton("Logout");
         p = new JPanel();
+        if (lg!=null)
+        lg.setVisible(false);
         p.add(b1);
         p.add(b2);
         p.add(b3);
         p.add(b4);
-        b1.addActionListener(this);
-        b2.addActionListener(this);
-        b3.addActionListener(this);
-        b4.addActionListener(this);
+        p.add(b5);
+        b5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Login nlg = new Login(mU,null);
+                op.setVisible(false);
+                nlg.setVisible(true);
+                nlg.setSize(500,500);
+
+            }
+        });
+        b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bal = new Detail(mU,op,"WITHDRAW");
+                bal.setVisible(true);
+                bal.setSize(500,500);
+            }
+        });
+        b2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bal = new Detail(mU,op,"DEPOSIT");
+                bal.setVisible(true);
+                bal.setSize(500,500);
+            }
+        });
+        b3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              bal = new Detail(mU,op,"CHANGE_PIN");
+                bal.setVisible(true);
+                bal.setSize(500,500);
+            }
+        });
+        b4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bal = new Detail(mU,op,"INFO");
+                bal.setVisible(true);
+                bal.setSize(500,500);
+            }
+        });
         getContentPane().add(p);
-    }
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (b1.getText().toString().equals("WITHDRAW")){
-            Balance bl = new Balance(mU);
-            p.setVisible(false);
-            b1.setVisible(true);
-            b1.setSize(500,500);
-        }
-        else if (b1.getText().toString().equals("DEPOSIT")){
-            Balance bl = new Balance(mU);
-            p.setVisible(false);
-            b1.setVisible(true);
-            b1.setSize(500,500);
-        }
-        else if (b1.getText().toString().equals("CHANGE PIN")){
-
-        }
-        else if (b1.getText().toString().equals("INFO")){
-
-        }
     }
 }
