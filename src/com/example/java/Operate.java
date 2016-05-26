@@ -1,6 +1,7 @@
 package com.example.java;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,7 +13,7 @@ public class Operate extends JFrame {
     User mU = new User();
     Login lg = new Login();
     Detail bal;
-    JButton b1,b2,b3,b4,b5;
+    JButton b1,b2,b3,b4,b5,b6;
     JPanel p;
     Operate(){}
     public Operate(User mUser, Login login) {
@@ -74,6 +75,13 @@ public class Operate extends JFrame {
                 bal.setSize(500,500);
             }
         });
+        p.setBackground(new Color(34,49,63));
+        b1.setBackground(new Color(228,251,254));
+        b2.setBackground(new Color(228,251,254));
+        b3.setBackground(new Color(228,251,254));
+        b4.setBackground(new Color(228,251,254));
+        b5.setBackground(new Color(228,251,254));
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         getContentPane().add(p);
     }
 }

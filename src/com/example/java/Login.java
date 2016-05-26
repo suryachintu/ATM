@@ -1,6 +1,7 @@
 package com.example.java;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,7 +10,7 @@ import java.awt.event.ActionListener;
  */
 public class Login extends JFrame implements ActionListener {
 
-    JLabel l1,l2,l3,l4;
+    JLabel l1,l2;
     User mUser = new User();
     Sign_up sp = new Sign_up();
     JTextField t1;
@@ -21,20 +22,23 @@ public class Login extends JFrame implements ActionListener {
     }
     Login(User ur, Sign_up sign_up){
         sp = sign_up;
-        l3 = new JLabel("Login To Continue");
         l1 = new JLabel("User_Name  : ");
         l2 = new JLabel("PIN : ");
-        t1 = new JTextField("Enter name ");
-        t2 = new JPasswordField("PIN");
+        t1 = new JTextField(10);
+        t2 = new JPasswordField(8);
         b = new JButton("Login");
         p = new JPanel();
-        p.add(l3);
         p.add(l1);
         p.add(t1);
         p.add(l2);
         p.add(t2);
         p.add(b);
         mUser = ur;
+        p.setBackground(new Color(34,49,63));
+        l1.setForeground(new Color(228,251,254));
+        l2.setForeground(new Color(228,251,254));
+        b.setBackground(new Color(228,251,254));
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         b.addActionListener(this);
         getContentPane().add(p);
     }
